@@ -1,0 +1,11 @@
+Changes
+LICENSE
+MANIFEST
+META.yml
+Makefile.PL
+README
+RU-AD.osm.bz2
+dist.ini
+lib/Geo/Openstreetmap/Parser.pm
+t/author-critic.t
+t/release-pod-coverage.t
