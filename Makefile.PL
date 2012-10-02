@@ -13,7 +13,9 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "liosha <liosha\@cpan.org>",
   "BUILD_REQUIRES" => {
     "English" => 0,
-    "Test::More" => 0
+    "List::MoreUtils" => 0,
+    "Test::More" => 0,
+    "utf8" => 0
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -28,7 +30,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.011",
+  "VERSION" => "0.02",
   "test" => {
     "TESTS" => "t/*.t"
   }

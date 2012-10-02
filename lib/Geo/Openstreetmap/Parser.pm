@@ -4,7 +4,7 @@ use warnings;
 
 package Geo::Openstreetmap::Parser;
 {
-  $Geo::Openstreetmap::Parser::VERSION = '0.011';
+  $Geo::Openstreetmap::Parser::VERSION = '0.02';
 }
 
 # ABSTRACT: Openstreetmap XML dump parser
@@ -52,10 +52,10 @@ sub _init_parser
                     my $obj = pop @path;
 
                     for ( $el ) {
-                        $path[-1]->{$el}->{$obj->{attr}->{k}} = $obj->{attr}->{v}   when 'tag';
-                        push @{$path[-1]->{$el}}, $obj->{attr}->{ref}               when 'nd';
-                        push @{$path[-1]->{$el}}, $obj->{attr}                      when 'member';
-                        $self->{callback}->{$el}->($obj)                            when $self->{callback};
+                        when ('tag')    { $path[-1]->{$el}->{$obj->{attr}->{k}} = $obj->{attr}->{v} }
+                        when ('nd')     { push @{$path[-1]->{$el}}, $obj->{attr}->{ref} }
+                        when ('member') { push @{$path[-1]->{$el}}, $obj->{attr} }
+                        when ($self->{callback})    { $self->{callback}->{$el}->($obj) }
                     }
                 },
         });
@@ -82,7 +82,7 @@ Geo::Openstreetmap::Parser - Openstreetmap XML dump parser
 
 =head1 VERSION
 
-version 0.011
+version 0.02
 
 =head1 METHODS
 
